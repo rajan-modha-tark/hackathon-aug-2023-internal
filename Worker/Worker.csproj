@@ -12,13 +12,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
+        <Folder Include="Controllers\"/>
+        <Folder Include="Services"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CommonModels\CommonModels.csproj"/>
     </ItemGroup>
 
 </Project>

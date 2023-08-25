@@ -2,9 +2,9 @@ namespace Worker;
 
 public class WorkerRegistrar
 {
+    private readonly string _allocatorUri;
     private readonly IConfiguration _configuration;
     private readonly ILogger<WorkerRegistrar> _logger;
-    private readonly string _allocatorUri;
 
     public WorkerRegistrar(IConfiguration configuration, ILogger<WorkerRegistrar> logger)
     {
@@ -20,11 +20,11 @@ public class WorkerRegistrar
             _configuration.GetValue<int>("port")
         );
     }
-    
+
     public async Task RegisterWorkerAsync()
     {
         var worker = GetWorkerInfo();
-        
+
         var client = new HttpClient();
         var response = await client.PostAsJsonAsync($"{_allocatorUri}/api/nodes/register", new
         {
@@ -32,7 +32,7 @@ public class WorkerRegistrar
             Address = $"http://localhost:{worker.Port}"
         });
         response.EnsureSuccessStatusCode();
-        
+
         _logger.LogInformation("Worker registered with name: {WorkerName}", worker.Name);
     }
 }
