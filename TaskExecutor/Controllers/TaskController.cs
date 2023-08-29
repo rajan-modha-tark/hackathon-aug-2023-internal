@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CommonModels;
+using Microsoft.AspNetCore.Mvc;
 using TaskExecutor.Models;
 
 namespace TaskExecutor.Controllers;
@@ -11,5 +12,11 @@ public class TaskController : ControllerBase
     public TaskRegistrationResponseModel RegisterTask(string taskName)
     {
         return new TaskRegistrationResponseModel();
+    }
+
+    [HttpPost]
+    public IActionResult TaskCompletionCallback(TaskCompletionModel model)
+    {
+        return Ok();
     }
 }

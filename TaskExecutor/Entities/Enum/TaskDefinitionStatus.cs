@@ -1,6 +1,6 @@
 ﻿namespace TaskExecutor.Entities.Enum;
 
-public enum TaskStatus
+public enum TaskDefinitionStatus
 {
     PENDING,
     RUNNING,

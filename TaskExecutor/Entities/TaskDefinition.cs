@@ -1,26 +1,28 @@
-﻿namespace TaskExecutor.Entities;
+﻿using TaskExecutor.Entities.Enum;
 
-public class Task
+namespace TaskExecutor.Entities;
+
+public class TaskDefinition
 {
-    public Task(string name)
+    public TaskDefinition(string name)
     {
         Id = new Guid();
         Name = name;
         CreatedDate = DateTime.Now;
-        Status = TaskStatus.Created;
+        Status = TaskDefinitionStatus.PENDING;
     }
 
     public Guid Id { get; set; }
     public string Name { get; set; }
     public DateTime CreatedDate { get; set; }
-    private TaskStatus Status { get; set; }
+    private TaskDefinitionStatus Status { get; set; }
 
-    public TaskStatus GetStatus()
+    public TaskDefinitionStatus GetStatus()
     {
         return this.Status;
     }
 
-    public void SetStatus(TaskStatus status)
+    public void SetStatus(TaskDefinitionStatus status)
     {
         if (status == this.Status)
         {

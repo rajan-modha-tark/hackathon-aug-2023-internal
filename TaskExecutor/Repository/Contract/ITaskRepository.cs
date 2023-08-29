@@ -1,12 +1,14 @@
-﻿using Task = TaskExecutor.Entities.Task;
+﻿using TaskExecutor.Entities;
 
 namespace TaskExecutor.Repository.Contract;
 
 public interface ITaskRepository
 {
-    public List<Task> GetAllTasks();
-    public Task GetTaskById(Guid id);
-    public void AddAndExecuteTask(Task task, bool shouldExecute = true);
-    public void DeleteTask(Task task);
-    public void UpdateTask(Task updatedTask);
+    public List<TaskDefinition> GetAllTasks();
+    public TaskDefinition GetTaskById(Guid id);
+    public TaskDefinition GetTaskToExecute();
+    public void AddTask(TaskDefinition taskDefinition);
+    public void AddTaskToExecute(TaskDefinition taskDefinition);
+    public void DeleteTask(TaskDefinition taskDefinition);
+    public void UpdateTask(TaskDefinition updatedTaskDefinition);
 }
